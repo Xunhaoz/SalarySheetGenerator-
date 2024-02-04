@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>勞務報酬單 簽收單資料庫</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="/static/img/walnutek.png">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="/static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown no-arrow">
+                        <h1 class="h3 mb-2 text-gray-800">勞務報酬單 簽收單資料庫</h1>
+                    </li>
+                </ul>
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="img-profile rounded-circle"
+                                 src="/static/img/undraw_profile.svg">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">新增外包商</h6>
+                    </div>
+
+                    <div class="card-body">
+                        <form id="add_member_form" method="post" action="/add_member" enctype="multipart/form-data">
+                            <div class="form-group row">
+                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <div class="mb-3">
+                                        <label for="name">領款人姓名</label>
+                                        <input name="name" class="form-control" id="name" type="text"
+                                               placeholder="王 小明">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
+                                        <label for="national-id">身分證字號</label>
+                                        <input name="national_id" class="form-control" id="national-id" type="text"
+                                               placeholder="A000000001">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
+                                        <label for="phone">聯絡電話</label>
+                                        <input name="phone" class="form-control" id="phone" type="text"
+                                               placeholder="0900000000">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="mb-3">
+                                        <label for="residence-address">戶籍地址</label>
+                                        <input name="residence_address" class="form-control" id="residence-address"
+                                               type="text" placeholder="臺北市松山區南京東路4段2號">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="mailing-address">通訊地址</label>
+                                        <input name="mailing_address" class="form-control" id="mailing-address"
+                                               type="text" placeholder="臺北市松山區南京東路4段2號">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <div class="mb-3">
+                                        <label for="bank">收款銀行</label>
+                                        <input name="bank" class="form-control" id="bank" type="text"
+                                               placeholder="700">
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="mb-3">
+                                        <label for="bank-account">收款帳戶</label>
+                                        <input name="bank_account" class="form-control" id="bank-account" type="text"
+                                               placeholder="0000000000">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
+                                        <label for="id-card-front">身分證正面</label>
+                                        <input name="id_card_front" class="form-control" type="file" id="id-card-front">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
+                                        <label for="id-card-back">身分證反面</label>
+                                        <input name="id_card_back" class="form-control" type="file" id="id-card-back">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
+                                        <h6>&diams; 請盡量找一個白底背景拍攝</h6>
+                                        <h6>&diams; 請以橫式上傳圖片</h6>
+                                        <h6>&diams; 請讓圖片占滿版面 50&percnt; 以上</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="my-2"></div>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <div class="mb-3">
+                                        <input name="bank_account" class="form-control" type="submit"
+                                               form="add_member_form">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th>請款人姓名</th>
+                                    <th>聯絡電話</th>
+                                    <th>銀行行號</th>
+                                    <th>銀行帳號</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>請款人姓名</th>
+                                    <th>聯絡電話</th>
+                                    <th>銀行行號</th>
+                                    <th>銀行帳號</th>
+                                    <th>操作</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                {% for member in members %}
+                                <tr>
+                                    <td>{{ member.name }}</td>
+                                    <td>{{ member.phone }}</td>
+                                    <td>{{ member.bank }}</td>
+                                    <td>{{ member.bank_account }}</td>
+                                    <td>
+                                        <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#exportPDF"
+                                           onclick="setMemberId({{ member.id }})">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-print"></i>
+                                            </span>
+                                            <span class="text">匯出 PDF</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Walnutek 2024</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="exportPDF" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logoutModalLabel">下載勞務報酬單</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+
+            <div class="modal-body">
+                <form id="download_pdf_form" method="post" action="/download_pdf">
+                    <div class="mb-3">
+                        <label for="project_name">專案名稱</label>
+                        <input name="project_name" class="form-control" id="project_name" type="text">
+                    </div>
+                    <div class="form-group row">
+
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <div class="mb-3">
+                                <label for="development_fee">軟體開發費</label>
+                                <input name="development_fee" class="form-control" id="development_fee" type="text">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <div class="mb-3">
+                                <label for="payment">支付金額</label>
+                                <input name="payment" class="form-control" id="payment" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <div class="mb-3">
+                                <label for="category">所得類別</label>
+                                <input name="category" class="form-control" id="category" type="text">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="method">收款方式</label>
+                                <input name="method" class="form-control" id="method" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date">收款日期</label>
+                        <input name="date" class="form-control" id="date" type="date">
+                    </div>
+                    <input type="hidden" name="member_id" id="member_id">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <input name="bank_account" class="form-control" type="submit" form="download_pdf_form">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/static/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="/static/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/static/js/demo/datatables-demo.js"></script>
+
+<script>
+    function setMemberId(member_id) {
+        document.getElementById('member_id').value = member_id;
+    }
+
+</script>
+
+</body>
+
+</html>
